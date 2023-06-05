@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ماشین در یک محیط سه بعدی</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.131.2/build/three.min.js"></script>
+    <script>
+        // ساخت صحنه
+        const scene = new THREE.Scene();
+
+        // ساخت دوربین
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        // ساخت رندرر
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // ساخت هندسه (مثلاً یک ماشین)
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const car = new THREE.Mesh(geometry, material);
+        scene.add(car);
+
+        // تغییرات مربوط به هر فریم
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // چرخش ماشین
+            car.rotation.x += 0.01;
+            car.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
