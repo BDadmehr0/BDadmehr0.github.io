@@ -1,51 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ماشین سواری</title>
+    <title>بازی شوتر ساده</title>
     <style>
-        body { margin: 0; }
-        #gameCanvas { width: 100%; height: 100%; touch-action: none; }
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        #game-area {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        .object {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: top 1s linear;
+        }
+        #player {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body>
-    <script src="https://cdn.babylonjs.com/babylon.js"></script>
-    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
-    <canvas id="gameCanvas"></canvas>
+    <div id="game-area">
+        <div id="player"></div>
+    </div>
+
     <script>
-        const canvas = document.getElementById("gameCanvas");
-        const engine = new BABYLON.Engine(canvas, true);
+        const gameArea = document.getElementById('game-area');
+        const player = document.getElementById('player');
+        let isShooting = false;
 
-        const createScene = function () {
-            const scene = new BABYLON.Scene(engine);
-
-            const camera = new BABYLON.UniversalCamera("camera", new BABYLON.Vector3(0, 5, -10), scene);
-            camera.setTarget(BABYLON.Vector3.Zero());
-            camera.attachControl(canvas, true);
-
-            const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
-            light.intensity = 0.7;
-
-            const ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 10, height: 10 }, scene);
-            const groundMaterial = new BABYLON.StandardMaterial("groundMaterial", scene);
-            groundMaterial.diffuseColor = new BABYLON.Color3(0.2, 0.2, 0.2);
-            ground.material = groundMaterial;
-
-            const car = BABYLON.SceneLoader.ImportMesh("", "", "car.babylon", scene, function (newMeshes) {
-                newMeshes[0].position.y = 0.5;
-            });
-
-            return scene;
-        };
-
-        const scene = createScene();
-
-        engine.runRenderLoop(function () {
-            scene.render();
+        gameArea.addEventListener('mousemove', (event) => {
+            const x = event.clientX - gameArea.offsetLeft;
+            player.style.left = x + 'px';
         });
 
-        window.addEventListener("resize", function () {
-            engine.resize();
+        gameArea.addEventListener('mousedown', () => {
+            isShooting = true;
+            shoot();
         });
+
+        gameArea.addEventListener('mouseup', () => {
+            isShooting = false;
+        });
+
+        function shoot() {
+            if (isShooting) {
+                const bullet = document.createElement('div');
+                bullet.className = 'object bullet';
+                bullet.style.left = player.style.left;
+                gameArea.appendChild(bullet);
+
+                let topPos = 0;
+                const bulletInterval = setInterval(() => {
+                    topPos -= 10;
+                    bullet.style.top = topPos + 'px';
+
+                    if (topPos <= -20) {
+                        bullet.remove();
+                        clearInterval(bulletInterval);
+                    }
+                }, 50);
+
+                setTimeout(shoot, 300);
+            }
+        }
     </script>
 </body>
 </html>
