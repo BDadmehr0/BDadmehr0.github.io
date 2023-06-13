@@ -18,60 +18,36 @@
     }
     
     /* استایل دکمه */
-    .a {
+    .button {
       padding: 12px 24px;
       font-size: 18px;
       color: white;
-      background-color: transparent;
+      background-color: #333;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       text-decoration: none;
-      position: relative;
-      overflow: hidden;
     }
     
-    /* افکت بلور */
-    .a::after {
-      content: "";
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      z-index: -1;
-      pointer-events: none;
-      background: linear-gradient(45deg, rgba(255, 0, 0, 0.4), rgba(0, 0, 255, 0.4), rgba(255, 255, 0, 0.4), rgba(0, 255, 0, 0.4), rgba(255, 0, 255, 0.4), rgba(0, 255, 255, 0.4), rgba(255, 0, 0, 0.4));
-      background-size: 300% 300%;
-      animation: gradientAnimation 5s infinite;
+    /* انیمیشن دکمه */
+    .button:hover {
+      animation: pulse 1s infinite;
     }
     
-    /* انیمیشن تغییر رنگ */
-    @keyframes gradientAnimation {
+    @keyframes pulse {
       0% {
-        background-position: 0% 50%;
+        transform: scale(1);
       }
       50% {
-        background-position: 100% 50%;
+        transform: scale(1.1);
       }
       100% {
-        background-position: 0% 50%;
+        transform: scale(1);
       }
     }
   </style>
 </head>
 <body>
-    <a href="/assets/Dadmehr%20Emami_1402-3-21.pdf" download class="button">دانلود فایل</a>
-
-  <script>
-    // اضافه کردن کلاس بلور به دکمه برای اعمال افکت بلور
-    const button = document.querySelector('.button');
-    button.addEventListener('mouseover', function() {
-      button.classList.add('blurred');
-    });
-    button.addEventListener('mouseout', function() {
-      button.classList.remove('blurred');
-    });
-  </script>
+  <a href="/assets/Dadmehr%20Emami_1402-3-21.pdf" download class="button">دانلود فایل</a>
 </body>
 </html>
