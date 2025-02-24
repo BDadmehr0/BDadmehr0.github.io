@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"/>
+    <title>رزومه شخصی</title>
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .glass-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .glass-box:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="starsCanvas"></canvas>
+    <div class="max-w-3xl w-full p-6 grid grid-cols-1 gap-6">
+        <div class="glass-box p-8 text-white text-center">
+            <img src="photo.jpg" alt="Profile" class="w-28 h-28 rounded-full border-4 border-gray-300 shadow-md mx-auto">
+            <h1 class="text-3xl font-bold mt-4">نام و نام خانوادگی</h1>
+            <p class="text-gray-300">عنوان شغلی یا مهارت‌ها</p>
+            <p class="text-gray-400 text-sm">موقعیت مکانی</p>
+        </div>
+        <div class="glass-box p-6 text-white text-center">
+            <h2 class="font-bold text-lg">اطلاعات تماس</h2>
+            <div class="flex justify-center space-x-4 mt-3 text-xl">
+                <a href="#" class="text-gray-300 hover:text-white transition-all"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-blue-400 hover:text-blue-600 transition-all"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="text-red-400 hover:text-red-600 transition-all"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="mt-2 text-gray-300 text-sm">شماره تماس: 09123456789</p>
+        </div>
+        <div class="glass-box p-6 text-white">
+            <h2 class="font-bold text-lg">مهارت‌ها</h2>
+            <ul class="mt-2 space-y-2">
+                <li class="flex items-center"><i class="fas fa-check text-green-400 ml-2"></i> مهارت ۱</li>
+                <li class="flex items-center"><i class="fas fa-check text-green-400 ml-2"></i> مهارت ۲</li>
+                <li class="flex items-center"><i class="fas fa-check text-green-400 ml-2"></i> مهارت ۳</li>
+            </ul>
+        </div>
+        <div class="glass-box p-6 text-white">
+            <h2 class="font-bold text-lg">سوابق شغلی</h2>
+            <div class="mt-2">
+                <p class="font-semibold">شرکت / سازمان - عنوان شغلی</p>
+                <p class="text-gray-300 text-sm">توضیح مختصر از وظایف انجام شده در شرکت یا پروژه‌ها</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById("starsCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let stars = [];
+        let numStars = 150;
+        function Star() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.radius = Math.random() * 2;
+            this.dy = Math.random() * 0.5 + 0.2;
+        }
+        Star.prototype.draw = function() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = "white";
+            ctx.fill();
+        };
+        Star.prototype.update = function() {
+            this.y += this.dy;
+            if (this.y > canvas.height) {
+                this.y = 0;
+                this.x = Math.random() * canvas.width;
+            }
+            this.draw();
+        };
+        function init() {
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push(new Star());
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => star.update());
+            requestAnimationFrame(animate);
+        }
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+        init();
+        animate();
+    </script>
+</body>
+</html>
