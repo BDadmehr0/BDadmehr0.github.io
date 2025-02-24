@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"/>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css"/>
     <title>رزومه شخصی</title>
     <style>
         body {
@@ -16,6 +16,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
+            font-family: Vazirmatn, sans-serif;
+            position: relative;
         }
         canvas {
             position: fixed;
@@ -25,96 +28,223 @@
             height: 100%;
             z-index: -1;
         }
-        .glass-box {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease-in-out;
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
         }
-        .glass-box:hover {
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .glass-box {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            transition: all 0.4s ease-in-out;
+            flex: 1;
+            min-width: 280px;
+        }
+        /*.glass-box:hover {
             transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+        }*/
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .profile-info img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid gray;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        .text-info {
+            color: white;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .tab-button {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            background: none;
+            border: none;
+            transition: 0.3s;
+        }
+        .tab-button.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 3px solid white;
+        }
+        .tab-content-wrapper {
+            position: relative;
+            min-height: 120px; /* ارتفاع ثابت برای جلوگیری از تغییر سایز */
+        }
+        .tab-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s;
+        }
+        .tab-content.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+        }
+        ul {
+            padding: 0;
+            margin: 10px 0;
+            list-style: none;
+            color: white;
+        }
+        ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        ul li i {
+            color: #4CAF50;
         }
     </style>
 </head>
 <body>
     <canvas id="starsCanvas"></canvas>
-    <div class="max-w-3xl w-full p-6 grid grid-cols-1 gap-6">
-        <div class="glass-box p-8 text-white text-center">
-            <img src="photo.jpg" alt="Profile" class="w-28 h-28 rounded-full border-4 border-gray-300 shadow-md mx-auto">
-            <h1 class="text-3xl font-bold mt-4">نام و نام خانوادگی</h1>
-            <p class="text-gray-300">عنوان شغلی یا مهارت‌ها</p>
-            <p class="text-gray-400 text-sm">موقعیت مکانی</p>
-        </div>
-        <div class="glass-box p-6 text-white text-center">
-            <h2 class="font-bold text-lg">اطلاعات تماس</h2>
-            <div class="flex justify-center space-x-4 mt-3 text-xl">
-                <a href="#" class="text-gray-300 hover:text-white transition-all"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-blue-400 hover:text-blue-600 transition-all"><i class="fab fa-telegram"></i></a>
-                <a href="#" class="text-red-400 hover:text-red-600 transition-all"><i class="fas fa-envelope"></i></a>
+
+    <div class="container">
+        <div class="row">
+            <!-- باکس پروفایل -->
+            <div class="glass-box">
+                <div class="profile-container">
+                    <div class="profile-info">
+                        <img src="photo.jpg" alt="Profile">
+                        <div class="text-info">
+                            <h1>دادمهر</h1>
+                            <p>توسعه‌دهنده نرم‌افزار و مهندس نرم‌افزار</p>
+                            <p class="text-gray-400 text-sm">ایران</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-icons pt-6">
+                    <a href="https://github.com/BDadmehr0" class="text-gray-300 hover:text-white">
+                        <i class="fab fa-github fa-2x"></i>
+                    </a>
+                    <a href="https://t.me/faststrong" class="text-blue-400 hover:text-blue-600">
+                        <i class="fab fa-telegram fa-2x"></i>
+                    </a>
+                    <a href="mailto:garfoxteam@gmail.com" class="text-red-400 hover:text-red-600">
+                        <i class="fas fa-envelope fa-2x"></i>
+                    </a>
+                    <a href="mailto:garfoxteam@gmail.com" class="text-red-400 hover:text-red-600">
+                        <i class="fas fa-youtube-play fa-2x"></i>
+                    </a>
+                </div>
+
             </div>
-            <p class="mt-2 text-gray-300 text-sm">شماره تماس: 09123456789</p>
-        </div>
-        <div class="glass-box p-6 text-white">
-            <h2 class="font-bold text-lg">مهارت‌ها</h2>
-            <ul class="mt-2 space-y-2">
-                <li class="flex items-center"><i class="fas fa-check text-green-400 ml-2"></i> مهارت ۱</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-400 ml-2"></i> مهارت ۲</li>
-                <li class="flex items-center"><i class="fas fa-check text-green-400 ml-2"></i> مهارت ۳</li>
-            </ul>
-        </div>
-        <div class="glass-box p-6 text-white">
-            <h2 class="font-bold text-lg">سوابق شغلی</h2>
-            <div class="mt-2">
-                <p class="font-semibold">شرکت / سازمان - عنوان شغلی</p>
-                <p class="text-gray-300 text-sm">توضیح مختصر از وظایف انجام شده در شرکت یا پروژه‌ها</p>
+
+            <!-- باکس مهارت‌ها -->
+            <div class="glass-box">
+                <h2 class="font-bold text-lg text-white">مهارت‌ها</h2>
+                <ul>
+                    <li><i class="fas fa-check"></i> Python</li>
+                    <li><i class="fas fa-check"></i> توسعه وب</li>
+                    <li><i class="fas fa-check"></i> توسعه نرم‌افزار</li>
+                </ul>
             </div>
+        </div>
+
+        <!-- پروژه‌ها -->
+        <div class="glass-box">
+            <h2 class="font-bold text-lg text-white">پروژه‌ها</h2>
+            <p class="font-semibold text-white">SalamLang</p>
+            <p class="text-gray-300 text-sm">زبان برنامه‌نویسی برای فارسی و عربی‌زبانان...</p>
+            <p class="font-semibold text-white mt-2">Yadgah</p>
+            <p class="text-gray-300 text-sm">پلتفرمی برای به اشتراک‌گذاری تجربیات و پرسش و پاسخ...</p>
+            <p class="font-semibold text-white mt-2">DailyTasker</p>
+            <p class="text-gray-300 text-sm">برنامه‌ای ساده و کارآمد برای مدیریت لیست کارهای روزانه...</p>
         </div>
     </div>
+
     <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
         const canvas = document.getElementById("starsCanvas");
         const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         let stars = [];
-        let numStars = 150;
+        let numStars = 180;
+
         function Star() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.radius = Math.random() * 2;
-            this.dy = Math.random() * 0.5 + 0.2;
+            this.dy = Math.random() * 0.7 + 0.3;
+            this.opacity = Math.random();
         }
+
         Star.prototype.draw = function() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = "white";
+            ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
             ctx.fill();
         };
+
         Star.prototype.update = function() {
             this.y += this.dy;
             if (this.y > canvas.height) {
                 this.y = 0;
                 this.x = Math.random() * canvas.width;
             }
+            this.opacity = Math.abs(Math.sin(Date.now() * 0.0005));
             this.draw();
         };
+
         function init() {
             stars = [];
             for (let i = 0; i < numStars; i++) {
                 stars.push(new Star());
             }
         }
+
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             stars.forEach(star => star.update());
             requestAnimationFrame(animate);
         }
+
         window.addEventListener("resize", () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             init();
         });
+
         init();
         animate();
     </script>
