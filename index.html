@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه شخصی</title>
     <!-- کتابخانهٔ Tailwind -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <!-- کتابخانهٔ Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
     <!-- فونت وزیرمتن -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <title>رزومه شخصی</title>
     <style>
         body {
             margin: 0;
@@ -22,8 +23,8 @@
             padding: 20px;
             font-family: Vazirmatn, sans-serif;
             position: relative;
-            scrollbar-width: thin; /* حالت نازک‌تر برای فایرفاکس */
-            scrollbar-color: #888 #111; /* رنگ Thumb و Track در فایرفاکس */
+            scrollbar-width: thin;
+            scrollbar-color: #888 #111;
         }
 
         canvas {
@@ -108,34 +109,36 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* ستون‌ها به صورت خودکار تنظیم می‌شوند */
-            gap: 10px; /* فاصله بین آیتم‌ها */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
             padding: 0;
-            list-style: none; /* حذف علامت‌های لیست */
+            list-style: none;
         }
 
         .skills-grid li {
-            background-color: rgba(255, 255, 255, 0.1); /* پس‌زمینه شیشه‌ای */
+            background-color: rgba(255, 255, 255, 0.1);
             padding: 10px;
             border-radius: 5px;
             text-align: center;
             color: white;
         }
 
-        /* استایل اسکرول‌بار در مرورگرهای مبتنی بر وب‌کیت مثل کروم */
         ::-webkit-scrollbar {
-            width: 16px; /* عرض اسکرول‌بار */
+            width: 16px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #111; /* رنگ پس‌زمینه Track */
+            background: #111;
         }
+
         ::-webkit-scrollbar-thumb {
-            background-color: #888; /* رنگ دستگیره اسکرول */
-            border-radius: 10px; /* گرد کردن گوشه‌های دستگیره */
-            border: 2px solid #111; /* فاصله بین دستگیره و Track */
+            background-color: #888;
+            border-radius: 10px;
+            border: 2px solid #111;
         }
     </style>
 </head>
+
 <body>
     <canvas id="starsCanvas"></canvas>
     <div class="container">
@@ -144,7 +147,6 @@
             <div class="glass-box flex flex-col items-center justify-center text-center">
                 <div class="profile-container">
                     <div class="profile-info">
-                        <!-- عکس پروفایل را متناسب با تصویر خودتان جایگزین کنید -->
                         <img src="photo.jpg" alt="Profile" class="rounded-full w-24 h-24 object-cover">
                         <div class="text-info mt-4">
                             <h1 class="text-xl font-bold">دادمهر</h1>
@@ -155,7 +157,6 @@
                 </div>
                 <hr class="m-4 w-full border-gray-600">
                 <div class="contact-icons pt-3 flex space-x-4">
-                    <!-- لینک‌های ارتباطی -->
                     <a href="https://github.com/BDadmehr0" class="text-gray-300 hover:text-white" target="_blank">
                         <i class="fab fa-github fa-2x"></i>
                     </a>
@@ -172,274 +173,180 @@
             <div class="glass-box">
                 <h2 class="font-bold text-lg text-white">مهارت‌ها</h2>
                 <ul class="skills-grid">
-                    <li>
-                        Python
-                    </li>
-                    <li>
-                        Web Development
-                    </li>
-                    <li>
-                        Software Development
-                    </li>
-                    <li>
-                        Tailwind, Bootstrap
-                    </li>
-                    <li>
-                        HTML, CSS
-                    </li>
-                    <li>
-                        Wordpress
-                    </li>
-                    <li>
-                        Linux
-                    </li>
-                    <li>
-                        Git
-                    </li>
-                    <li>
-                        Django, JS
-                    </li>
-                    <li>
-                        REST API
-                    </li>
-                    <li>
-                        Redis, MongoDB, SQLite
-                    </li>
-                    <li>
-                        Bash
-                    </li>
-                    <li>
-                        Qt, Tkinter
-                    </li>
+                    <li>Python</li>
+                    <li>Web Development</li>
+                    <li>Software Development</li>
+                    <li>Tailwind, Bootstrap</li>
+                    <li>HTML, CSS</li>
+                    <li>Wordpress</li>
+                    <li>Linux</li>
+                    <li>Git</li>
+                    <li>Django, JS</li>
+                    <li>REST API</li>
+                    <li>Redis, MongoDB, SQLite</li>
+                    <li>Bash</li>
+                    <li>Qt, Tkinter</li>
                 </ul>
             </div>
         </div>
 
-    <!-- پروژه‌ها -->
-    <div class="glass-box">
-        <h2 class="font-bold text-lg text-white">پروژه‌ها</h2>
-
+        <!-- پروژه‌ها -->
+        <div class="glass-box">
+            <h2 class="font-bold text-lg text-white">پروژه‌ها</h2>
             <hr class="m-2">
             <!-- نمونه با تصویر کوچک در کنار نام پروژه -->
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://github.com/BDadmehr0/onedns" target="_blank">
                     <img src="https://raw.githubusercontent.com/BDadmehr0/onedns/refs/heads/main/logo.png" alt="oneDNS Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://github.com/BDadmehr0/onedns" target="_blank" class="text-white hover:underline">
-                    oneDNS
-                </a>
+                <a href="https://github.com/BDadmehr0/onedns" target="_blank" class="text-white hover:underline">oneDNS</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                می توان آن را به راحتی در سیستم های لینوکس نصب و اجرا کرد و به طور خودکار DNS را تنظیم کرد.
-            </p>
-
+            <p class="text-gray-300 text-sm">می توان آن را به راحتی در سیستم های لینوکس نصب و اجرا کرد و به طور خودکار DNS را تنظیم کرد.</p>
             <hr class="m-2">
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://github.com/Yadgah/Yadgah" target="_blank">
                     <img src="https://raw.githubusercontent.com/BDadmehr0/Yadgah/main/favicon.ico" alt="Yadgah Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://github.com/Yadgah/Yadgah" target="_blank" class="text-white hover:underline">
-                    Yadgah
-                </a>
+                <a href="https://github.com/Yadgah/Yadgah" target="_blank" class="text-white hover:underline">Yadgah</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                وبسایت یادگاه - بستری برای یادگیری، اشتراک تجربیات و دریافت اطلاعات مفید. از پرسش و پاسخ تا مطالعه مقالات آموزنده.
-            </p>
-
+            <p class="text-gray-300 text-sm">وبسایت یادگاه - بستری برای یادگیری، اشتراک تجربیات و دریافت اطلاعات مفید. از پرسش و پاسخ تا مطالعه مقالات آموزنده.</p>
             <hr class="m-2">
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://github.com/BDadmehr0/Crown" target="_blank">
                     <img src="https://raw.githubusercontent.com/BDadmehr0/Crown/refs/heads/main/doc/pxArt.jpg" alt="DailyTasker Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://github.com/BDadmehr0/Crown" target="_blank" class="text-white hover:underline">
-                    Crown
-                </a>
+                <a href="https://github.com/BDadmehr0/Crown" target="_blank" class="text-white hover:underline">Crown</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                Crown یک ابزار نوآورانه است که برای تبدیل کدهای قدیمی C و C++ به کدهای امن و کارآمد Rust طراحی شده است.
-            </p>
-
+            <p class="text-gray-300 text-sm">Crown یک ابزار نوآورانه است که برای تبدیل کدهای قدیمی C و C++ به کدهای امن و کارآمد Rust طراحی شده است.</p>
             <hr class="m-2">
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://github.com/BDadmehr0/DailyTasker" target="_blank">
                     <img src="https://raw.githubusercontent.com/BDadmehr0/DailyTasker/main/logo.png" alt="DailyTasker Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://github.com/BDadmehr0/DailyTasker" target="_blank" class="text-white hover:underline">
-                    DailyTasker
-                </a>
+                <a href="https://github.com/BDadmehr0/DailyTasker" target="_blank" class="text-white hover:underline">DailyTasker</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                DailyTasker یک برنامه ساده و کارآمد برای مدیریت لیست کارها (To-Do) است که با پایتون و PyQt5 ساخته شده است.
-            </p>
-
+            <p class="text-gray-300 text-sm">DailyTasker یک برنامه ساده و کارآمد برای مدیریت لیست کارها (To-Do) است که با پایتون و PyQt5 ساخته شده است.</p>
             <hr class="m-2">
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://novinverify.com" target="_blank">
                     <img src="novin_logo.png" alt="DailyTasker Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://novinverify.com" target="_blank" class="text-white hover:underline">
-                    Novin verify
-                </a>
+                <a href="https://novinverify.com" target="_blank" class="text-white hover:underline">Novin verify</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                نوین وریفای ارائه دهنده خدمات احراز هویت، آی پی ثابت رایگان و فایل های لایه باز برای کاربران ایرانی و پلتفرم های تحریم شده با 5 سال سابقه کار و پشتیبانی تخصصی.
-            </p>
-
+            <p class="text-gray-300 text-sm">نوین وریفای ارائه دهنده خدمات احراز هویت، آی پی ثابت رایگان و فایل های لایه باز برای کاربران ایرانی و پلتفرم های تحریم شده با 5 سال سابقه کار و پشتیبانی تخصصی.</p>
             <hr class="m-2">
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://verifybartar.com" target="_blank">
                     <img src="https://verifybartar.com/wp-content/uploads/2024/08/%D9%84%D9%88%DA%AF%D9%88%DB%8C-%D9%88%D8%B1%DB%8C%D9%81%D8%A7%DB%8C-%D8%A8%D8%B1%D8%AA%D8%B1.png" alt="DailyTasker Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://verifybartar.com" target="_blank" class="text-white hover:underline">
-                    Verify bartar
-                </a>
+                <a href="https://verifybartar.com" target="_blank" class="text-white hover:underline">Verify bartar</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                وریفای برتر، علاوه بر احراز هویت، خدمات گسترده‌ای از جمله نقد کردن درآمدهای ارزی، مشاوره حقوقی، افتتاح حساب‌های بین‌المللی، و مشاوره در امور مالیاتی ارائه می‌دهد
-            </p>
-
-        <hr class="m-2">
-        <div class="flex items-center gap-2 font-semibold text-white mt-2">
-            <a href="https://iraqkala.ir" target="_blank">
-                <img src="https://iraqkala.ir/wp-content/uploads/2023/02/artistic-flag-of-iraq-with-geometric-wave-concept-art-design-free-vector.jpg" alt="DailyTasker Logo" class="w-6 h-6 object-contain" />
-            </a>
-            <a href="https://iraqkala.ir" target="_blank" class="text-white hover:underline">
-                Iraq kala
-            </a>
-        </div>
-        <p class="text-gray-300 text-sm">
-            تیم عراق کالا همواره با هدف تبدیل شدن به بزرگ‌ترین تیم تجاری ایران در همکاری با همسایگان، تلاش می‌کند.
-        </p>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="glass-box">
-        <h2 class="font-bold text-lg text-white">سازمان ها</h2>
-
+            <p class="text-gray-300 text-sm">وریفای برتر، علاوه بر احراز هویت، خدمات گسترده‌ای از جمله نقد کردن درآمدهای ارزی، مشاوره حقوقی، افتتاح حساب‌های بین‌المللی، و مشاوره در امور مالیاتی ارائه می‌دهد</p>
             <hr class="m-2">
-            <!-- نمونه با تصویر کوچک در کنار نام پروژه -->
+            <div class="flex items-center gap-2 font-semibold text-white mt-2">
+                <a href="https://iraqkala.ir" target="_blank">
+                    <img src="https://iraqkala.ir/wp-content/uploads/2023/02/artistic-flag-of-iraq-with-geometric-wave-concept-art-design-free-vector.jpg" alt="DailyTasker Logo" class="w-6 h-6 object-contain" />
+                </a>
+                <a href="https://iraqkala.ir" target="_blank" class="text-white hover:underline">Iraq kala</a>
+            </div>
+            <p class="text-gray-300 text-sm">تیم عراق کالا همواره با هدف تبدیل شدن به بزرگ‌ترین تیم تجاری ایران در همکاری با همسایگان، تلاش می‌کند.</p>
+        </div>
+
+        <!-- سازمان ها -->
+        <div class="glass-box">
+            <h2 class="font-bold text-lg text-white">سازمان ها</h2>
+            <hr class="m-2">
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://github.com/DonyaOS" target="_blank">
                     <img src="https://raw.githubusercontent.com/DonyaOS/Donya/refs/heads/main/images/demo.jpg" alt="oneDNS Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://github.com/DonyaOS" target="_blank" class="text-white hover:underline">
-                    DonyaOS - سمت (توسعه دهند)
-                </a>
+                <a href="https://github.com/DonyaOS" target="_blank" class="text-white hover:underline">DonyaOS - سمت (توسعه دهند)</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                دنیا یک سیستم عامل است. یک توزیع دیگر لینوکس که با استفاده از یک سیستم مدیریت بسته ساخته شده است.
-            </p>
-
+            <p class="text-gray-300 text-sm">دنیا یک سیستم عامل است. یک توزیع دیگر لینوکس که با استفاده از یک سیستم مدیریت بسته ساخته شده است.</p>
             <hr class="m-2">
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://github.com/Yadgah" target="_blank">
                     <img src="https://raw.githubusercontent.com/BDadmehr0/Yadgah/main/favicon.ico" alt="Yadgah Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://github.com/Yadgah" target="_blank" class="text-white hover:underline">
-                    Yadgah - سمت (صاحب)
-                </a>
+                <a href="https://github.com/Yadgah" target="_blank" class="text-white hover:underline">Yadgah - سمت (صاحب)</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                وبسایت یادگاه - بستری برای یادگیری، اشتراک تجربیات و دریافت اطلاعات مفید. از پرسش و پاسخ تا مطالعه مقالات آموزنده.
-            </p>
-
+            <p class="text-gray-300 text-sm">وبسایت یادگاه - بستری برای یادگیری، اشتراک تجربیات و دریافت اطلاعات مفید. از پرسش و پاسخ تا مطالعه مقالات آموزنده.</p>
             <hr class="m-2">
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://github.com/SalamLang" target="_blank">
                     <img src="https://raw.githubusercontent.com/SalamLang/Salam/main/assets/logo-box.svg" alt="Yadgah Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://github.com/SalamLang" target="_blank" class="text-white hover:underline">
-                    SalamLang - سمت (توسعه دهنده / تریاژ)
-                </a>
+                <a href="https://github.com/SalamLang" target="_blank" class="text-white hover:underline">SalamLang - سمت (توسعه دهنده / تریاژ)</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                سلام: توانمندسازی فارسی‌زبانان و عربی‌زبانان با تجربه‌ی برنامه‌نویسی کاربرپسند. سادگی در کدنویسی را برای توسعه‌دهندگان محلی کشف کنید.
-            </p>
-
+            <p class="text-gray-300 text-sm">سلام: توانمندسازی فارسی‌زبانان و عربی‌زبانان با تجربه‌ی برنامه‌نویسی کاربرپسند. سادگی در کدنویسی را برای توسعه‌دهندگان محلی کشف کنید.</p>
             <hr class="m-2">
             <div class="flex items-center gap-2 font-semibold text-white mt-2">
                 <a href="https://github.com/MedX-Media" target="_blank">
                     <img src="https://avatars.githubusercontent.com/u/178677664?s=200&v=4" alt="Yadgah Logo" class="w-6 h-6 object-contain" />
                 </a>
-                <a href="https://github.com/MedX-Media" target="_blank" class="text-white hover:underline">
-                    MedX - سمت (توسعه دهنده)
-                </a>
+                <a href="https://github.com/MedX-Media" target="_blank" class="text-white hover:underline">MedX - سمت (توسعه دهنده)</a>
             </div>
-            <p class="text-gray-300 text-sm">
-                پلتفرم رسانه‌ای متن‌باز برای افراد حوزه پزشکی تا کشف کنند، یاد بگیرند، به اشتراک بگذارند و در دنیای فناوری سلامت مشارکت کنند.
-            </p>
+            <p class="text-gray-300 text-sm">پلتفرم رسانه‌ای متن‌باز برای افراد حوزه پزشکی تا کشف کنند، یاد بگیرند، به اشتراک بگذارند و در دنیای فناوری سلامت مشارکت کنند.</p>
+        </div>
     </div>
 
-</div>
-
-<!-- اسکریپت ستاره‌های پس‌زمینه -->
-<script>
-    const canvas = document.getElementById("starsCanvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let stars = [];
-    const numStars = 180;
-
-    function Star() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.radius = Math.random() * 2;
-        this.dy = Math.random() * 0.7 + 0.3;
-        this.opacity = Math.random();
-    }
-
-    Star.prototype.draw = function() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-        ctx.fill();
-    };
-
-    Star.prototype.update = function() {
-        this.y += this.dy;
-        if (this.y > canvas.height) {
-            this.y = 0;
-            this.x = Math.random() * canvas.width;
-        }
-        this.opacity = Math.abs(Math.sin(Date.now() * 0.0005));
-        this.draw();
-    };
-
-    function init() {
-        stars = [];
-        for (let i = 0; i < numStars; i++) {
-            stars.push(new Star());
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(star => star.update());
-        requestAnimationFrame(animate);
-    }
-
-    window.addEventListener("resize", () => {
+    <!-- اسکریپت ستاره‌های پس‌زمینه -->
+    <script>
+        const canvas = document.getElementById("starsCanvas");
+        const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        init();
-    });
 
-    init();
-    animate();
-</script>
+        let stars = [];
+        const numStars = 180;
+
+        function Star() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.radius = Math.random() * 2;
+            this.dy = Math.random() * 0.7 + 0.3;
+            this.opacity = Math.random();
+        }
+
+        Star.prototype.draw = function () {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+            ctx.fill();
+        };
+
+        Star.prototype.update = function () {
+            this.y += this.dy;
+            if (this.y > canvas.height) {
+                this.y = 0;
+                this.x = Math.random() * canvas.width;
+            }
+            this.opacity = Math.abs(Math.sin(Date.now() * 0.0005));
+            this.draw();
+        };
+
+        function init() {
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push(new Star());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => star.update());
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        init();
+        animate();
+    </script>
 </body>
+
 </html>
